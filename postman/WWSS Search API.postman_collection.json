@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "e15d6227-5f59-4056-88d6-0685207a17c5",
+		"name": "WWSS Search API",
+		"description": "Postman collection for Website-Wide Search System (Laravel)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17222009",
+		"_collection_link": "https://jpdigit.postman.co/workspace/Admission-Hub~d229e377-0398-4c29-8cb6-cfd53c3cd32b/collection/17222009-e15d6227-5f59-4056-88d6-0685207a17c5?action=share&source=collection_link&creator=17222009"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/search?q=developer&page=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "developer"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Unified search across BlogPosts, Products, Pages, FAQs.\nReturns paginated results with type, title, snippet, and link."
+			},
+			"response": [
+				{
+					"name": "Sample Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/search?q=developer&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "developer"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"data\": [\n    {\n      \"type\": \"blog_post\",\n      \"title\": \"Developer Productivity Tips\",\n      \"snippet\": \"Here are some tips to boost your productivity as a developer...\",\n      \"link\": \"http://localhost/blog/1\"\n    },\n    {\n      \"type\": \"product\",\n      \"title\": \"Developer Laptop\",\n      \"snippet\": \"A high-end laptop for developers...\",\n      \"link\": \"http://localhost/products/2\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"http://localhost/api/search?page=1\",\n    \"last\": \"http://localhost/api/search?page=2\",\n    \"prev\": null,\n    \"next\": \"http://localhost/api/search?page=2\"\n  },\n  \"meta\": {\n    \"current_page\": 1,\n    \"from\": 1,\n    \"last_page\": 2,\n    \"path\": \"http://localhost/api/search\",\n    \"per_page\": 10,\n    \"to\": 10,\n    \"total\": 12\n  }\n}"
+				}
+			]
+		},
+		{
+			"name": "Suggestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/search/suggestions?q=dev",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"search",
+						"suggestions"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "dev"
+						}
+					]
+				},
+				"description": "Returns typeahead suggestions for the search query (if implemented)."
+			},
+			"response": [
+				{
+					"name": "Sample Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/search/suggestions?q=dev",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"search",
+								"suggestions"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "dev"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"data\": [\n    \"developer\",\n    \"development\",\n    \"devops\"\n  ]\n}"
+				}
+			]
+		}
+	]
+}
